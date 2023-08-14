@@ -31,8 +31,6 @@ function App() {
   const [guesses, setGuesses] = useState(3);
   const [score, setScore] = useState(0);
 
-  console.log(words);
-
   const pickWordAndCategory = useCallback(() => {
     // pick a random category
     const categories = Object.keys(words);
@@ -42,6 +40,7 @@ function App() {
     // pick a random word
     const word =
       words[category][Math.floor(Math.random() * words[category].length)];
+      console.log("eu"  + word)
 
     console.log(category, word);
 
@@ -51,7 +50,7 @@ function App() {
   // start the game
   const startGame = useCallback(() => {
     // clear all letters
-    clearLettersStates();
+    clearLettersStates(); 
 
     // choose a word
     const { category, word } = pickWordAndCategory();
