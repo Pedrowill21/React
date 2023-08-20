@@ -22,7 +22,7 @@ function App() {
   }
 
   
-
+console.log(fetch("./data/produtos.js"))
 
   return (
     <div className='app'>

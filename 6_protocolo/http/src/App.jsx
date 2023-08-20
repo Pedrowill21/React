@@ -11,7 +11,7 @@ import { useFetch } from "../hooks/useFetch";
 // "http://localhost:3001/products"
 const url = "http://localhost:3000/products";
 
-function App() {
+export default  function App() {
   const [products, setProducts] = useState([]);
 
   // 4 - custom hook e 5 - refactor post
