@@ -1,0 +1,108 @@
+.container{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(84, 2, 160);
+    display: flex;
+    padding: 10px 5px;
+    flex-direction: column;
+    
+
+}
+
+ul{
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+}
+
+nav{
+    padding: 10px;
+}
+
+li{
+    margin: 5px;
+    margin: 0px 10px; 
+    padding: 10px ;
+}
+
+li:hover{
+    background-color: rgba(255, 255, 255, 0.062);
+ 
+}
+
+.menu_mobile{
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    
+    
+}
+   
+.ul_mobile{
+    display: flex;
+    flex-direction: column;
+}
+
+.menu_toggle{
+    width: 40px;
+    height: 40px;
+    display: none; 
+
+}
+
+.one,
+.two,
+.three{
+    background-color: #fff;
+    width: 100%;
+    height: 8px;
+    margin: 5px 0;
+}
+
+
+@media (max-width:530px) {
+    .menu_pc{
+        display: none;
+    }
+
+    .menu_toggle{
+        display: block;
+        align-self: flex-end;
+    }
+
+    .menu_mobile{
+        display: flex;
+        justify-content: center
+    }
+
+    .container{
+        display: flex;
+        align-items: center;
+    }
+
+    .three_distortion {
+        transform: rotate(-45deg) translate(2px, -9px);
+        background-color: #fff;
+        width: 100%;
+        height: 8px;
+        margin: 5px 0;
+        transition: 0.3s;
+    }
+    
+    .two_distortion  {
+        opacity: 0;
+        transition: 0.3s;
+    
+    }
+    
+    .one_distortion  {
+        transform: rotate(45deg) translate(0px, 7px);
+        background-color: #fff;
+        width: 100%;
+        height: 8px;
+        margin: 5px 0;
+         transition: 0.3s;
+    }
+
+    
+}

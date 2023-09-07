@@ -44,6 +44,7 @@ export default  function App() {
     //     "Content-Type": "application/json",
     //   },
     //   body: JSON.stringify(product),
+    
     // });
 
     // const addedProduct = await res.json();

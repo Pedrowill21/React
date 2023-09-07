@@ -40,9 +40,7 @@ function App() {
     // pick a random word
     const word =
       words[category][Math.floor(Math.random() * words[category].length)];
-      console.log("eu"  + word)
-
-    console.log(category, word);
+     
 
     return { category, word };
   }, [words]);

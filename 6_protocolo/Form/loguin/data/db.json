@@ -1,0 +1,14 @@
+{
+  "products": [
+    {
+      "name": "pedro",
+      "idade": "18",
+      "id": 1
+    },
+    {
+      "name": "renato",
+      "idade": "32",
+      "id": 2
+    }
+  ]
+}

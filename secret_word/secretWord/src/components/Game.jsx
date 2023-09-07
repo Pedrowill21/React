@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 
 // styles
 import "./Game.css";
+import Teste from "../Teste";
 
 const Game = ({
   verifyLetter,
@@ -37,6 +38,7 @@ const Game = ({
       </h3>
       <p>Você ainda tem {guesses} tentativa(s).</p>
       <div className="wordContainer">
+
         {letters.map((letter, i) =>
           guessedLetters.includes(letter) ? (
             <span className="letter" key={i}>
@@ -68,6 +70,7 @@ const Game = ({
           <span key={i}>{letter}, </span>
         ))}
       </div>
+      <Teste/>
     </div>
   );
 };
