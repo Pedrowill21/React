@@ -8,15 +8,21 @@ const Board = () => {
   const [p2,setP2] = useState([]);
   const [turn,setTurn] = useState(true)
   const [win,setWin] = useState(false)
+
   const winCondition = [
     
-    "1,5,9",
-    "1,4,7",
-    "1,2,3"
+    [1,2,3],
+    [1,4,7],
+    [1,5,9],
+    [3,6,9]
+  
   ];
+
+
+ 
   
 
-  const playing =(square)=>{
+  const playing = (square)=>{
       if(turn){
         console.log(square)
         setP1([...p1,square])
@@ -27,16 +33,18 @@ const Board = () => {
         console.log(p2)
         setTurn(true)
       }
-
-    
-
-
   }
 
+ 
+
+
   useEffect(()=>{
-    console.log("useEffect")
     console.log(p1)
   },[p1])
+
+  useEffect(()=>{
+    console.log(p2)
+  },[p2])
 
 
 
