@@ -1,25 +1,33 @@
 import style from "./Square.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const Square = ({id, circle:option, playing}) => {
+const Square = ({id, circle:option, playing, clean}) => {
 const [clicked,setClicked] = useState(false);
 const [circle, setCircle] = useState()
 
     function teste(){
-        if(clicked == false){
+
+        if(!clicked){
             setClicked(true)
             playing(id)
             setCircle(option)
-        }else{
-            return
         }
+
     }
 
 
+   useEffect(()=>{
+  
+      setCircle()
+      setClicked(false)
+    
+   },[clean])
+
   return (
     <div className={style.Square} onClick={()=> teste()} >
-       {circle == false && ( <img src="../../public/circulo.png" alt="x" />)}
-       {circle  && ( <img src="../../public/excluir.png" alt="x" />)}
+      {clicked &&(
+         circle ? ( <img src="../../public/circulo.png" alt="x" />) : ( <img src="../../public/excluir.png" alt="x" />)
+      )}
 
     </div>
   )

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import style from "./board.module.css"
 import Square from './Square'
+import Modal from "./Modal";
 
 const Board = () => {
 
@@ -8,6 +9,7 @@ const Board = () => {
   const [p2,setP2] = useState([]);
   const [turn,setTurn] = useState(true);
   const [winner, setWinner] = useState({})
+  const [clean,setClean] = useState(false)
   
   const positionsWinsGame = [
     [1, 2, 3],
@@ -29,8 +31,19 @@ function checkWin(){
     player2:p2,
 
   }
-  console.log(plays)"
-   console.log(playAlreadyWin(plays))
+ 
+  const result = playAlreadyWin(plays);
+
+  if(result.win){
+    setWinner(result)
+  }
+
+  if(p1.length + p2.length == 9 && result.win == false){
+    alert("gamer over")
+    retry()
+  }
+
+
 }
 
   
@@ -69,25 +82,51 @@ const playAlreadyWin = (data) => {
   }
 
   useEffect(()=>{
+    if(p1.length >= 3 || p2.length >= 3){
       checkWin()
+    }else{
+      return
+    }
+     
   },[p1,p2])
 
 
+  const retry = ()=>{
+   setP1([])
+   setP2([])
+   setWinner({})
+   setClean(!clean)
+  }
+
   return (
     <div className={style.board}>
-      <div>
-       
+      <div className={style.info}>
+
+        <div>
+          <h2>Próxima jogada {turn ? "Bolinha":"X"}</h2>
+        </div>
+
+        {winner.win && (<Modal winner={winner.play == "player1" ? "Bolinha" : "X" } retry={retry} />)}
+
+
+
+
+      
       </div>
-        
-       <Square id={1} circle={turn} playing={playing}/>
-       <Square id={2} circle={turn} playing={playing}/>
-       <Square id={3} circle={turn} playing={playing}/>
-       <Square id={4} circle={turn} playing={playing}/>
-       <Square id={5} circle={turn} playing={playing}/>
-       <Square id={6} circle={turn} playing={playing}/>
-       <Square id={7} circle={turn} playing={playing}/>
-       <Square id={8} circle={turn} playing={playing}/>
-       <Square id={9} circle={turn} playing={playing}/>
+
+
+        <div className={style.container_square}>
+            <Square id={1} circle={turn} playing={playing} clean={clean}/>
+            <Square id={2} circle={turn} playing={playing} clean={clean}/>
+            <Square id={3} circle={turn} playing={playing} clean={clean}/>
+            <Square id={4} circle={turn} playing={playing} clean={clean}/>
+            <Square id={5} circle={turn} playing={playing} clean={clean}/>
+            <Square id={6} circle={turn} playing={playing} clean={clean}/>
+            <Square id={7} circle={turn} playing={playing} clean={clean}/>
+            <Square id={8} circle={turn} playing={playing} clean={clean}/>
+            <Square id={9} circle={turn} playing={playing} clean={clean}/>
+        </div>
+   
  
         
     </div>

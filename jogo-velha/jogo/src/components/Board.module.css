@@ -1,6 +1,12 @@
 .board{
+   margin: 20px;
+}
+
+.container_square{
+    margin: 20px;
     width: 420px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    
 }
