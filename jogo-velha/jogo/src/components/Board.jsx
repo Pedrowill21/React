@@ -6,17 +6,53 @@ const Board = () => {
 
   const [p1,setP1] = useState([]);
   const [p2,setP2] = useState([]);
-  const [turn,setTurn] = useState(true)
-  const [win,setWin] = useState(false)
-
-  const winCondition = [
-    
-    [1,2,3],
-    [1,4,7],
-    [1,5,9],
-    [3,6,9]
+  const [turn,setTurn] = useState(true);
+  const [winner, setWinner] = useState({})
   
-  ];
+  const positionsWinsGame = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+  
+    [1, 4, 7],
+    [2, 5, 8],
+    [3, 6, 9],
+  
+    [1, 5, 9],
+    [3, 5, 7]
+  ]
+
+
+function checkWin(){
+  const plays = {
+    player1:p1,
+    player2:p2,
+
+  }
+  console.log(plays)"
+   console.log(playAlreadyWin(plays))
+}
+
+  
+const playAlreadyWin = (data) => {
+  const result = {
+    play: '',
+    position: [0],
+    win: false
+  }
+
+  for (const [key, value] of Object.entries(data)) {
+    positionsWinsGame.forEach((win) => {
+      if (win.every((item) => value.includes(item))) {
+        result.play = key
+        result.position = win
+        result.win = true
+      }
+    })
+  }
+
+  return result
+}
 
 
  
@@ -24,38 +60,23 @@ const Board = () => {
 
   const playing = (square)=>{
       if(turn){
-        console.log(square)
         setP1([...p1,square])
-        console.log(p1)
         setTurn(false)
       }else{
         setP2([...p2,square])
-        console.log(p2)
         setTurn(true)
       }
   }
 
- 
-
-
   useEffect(()=>{
-    console.log(p1)
-  },[p1])
-
-  useEffect(()=>{
-    console.log(p2)
-  },[p2])
-
-
-
+      checkWin()
+  },[p1,p2])
 
 
   return (
     <div className={style.board}>
       <div>
-        {win && (
-          <h1>Alguém venceu!</h1>
-        )}
+       
       </div>
         
        <Square id={1} circle={turn} playing={playing}/>
